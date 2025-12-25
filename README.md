@@ -1,9 +1,8 @@
 # PsNee-CH32V003
-Porting of PsNee to CH32V003 (rev2)
+Porting of PsNee to CH32V003 (rev2b)
 
 
-
-PsNee v7 port to the ch32v003 MCU compatible  and stealth with all Ps1 motherboards!
+PsNee port to the ch32v003 MCU compatible and stealth with all Ps1 motherboards!
 Plus this code virtually don't introduces any noise or degradation of the laser RF signal level because the it injects the SCEX string only when needed.
 
 I'm just a hobbyist programmer, so please forgive any coding mistakes, syntax errors, or other issues. The code is heavily based on PsNee v7/v8 by kalymos, 
@@ -31,7 +30,7 @@ Why I haven't ported "postal" PsNee v8? Simply because JAP bios patching is bugg
 - For SCPH-102 models, you can use my [OneNee_ch32v003](https://github.com/carmax91/OneNee_Ch32v003) port wich "unlocks" all regions backup.
 
 ## Prerequisites
-- [WCH-LinkE](https://github.com/carmax91/PsNee-CH32V003/blob/main/Imgs/WCH-LinkEPrg.jpg) programmer (pay attention to the E).
+- [WCH-LinkE](https://github.com/carmax91/PsNee-CH32V003/blob/Rev_2/Imgs/WCH-LinkEPrg.jpg) programmer (pay attention to the E).
 - WCH LinkUtility software.
 
 ## HowTo
@@ -42,19 +41,20 @@ Why I haven't ported "postal" PsNee v8? Simply because JAP bios patching is bugg
 - Open LinkUtility and check if the tool sees the programmer.
 - Set the core (RISC-V) and the series (CH32V003).
 - Click on the folder icon (or press ALT+F1)
-- Select the BIN compiled files based on your console region (you can find the bin files in the [BIN]((https://github.com/carmax91/PsNee-CH32V003/tree/main/BIN)) folder).
+- Select the BIN compiled files based on your console region (you can find the bin files in the [BIN](https://github.com/carmax91/PsNee-CH32V003/tree/Rev_2/BIN%20(rev2)) folder).
 - Connect the chip to the programmer.
 - Program the chip via Target -> Program (or press F10).
-![done](https://github.com/carmax91/PsNee-CH32V003/blob/main/Imgs/LinU2.png)
+![done](https://github.com/carmax91/PsNee-CH32V003/blob/Rev_2/Imgs/LinU2.png)
 - Now you have your PsNee on WCH CH32V003 chip!
-- For the installation, follow the wiring diagrams in the [Install](https://github.com/carmax91/PsNee-CH32V003/tree/main/Install) folder based on your console motherboard.
+- For the installation, follow the wiring diagrams in the [Install](https://github.com/carmax91/PsNee-CH32V003/tree/Rev_2/Install) folder based on your console motherboard.
 
 ## Some info about the source code
 I've ported the code to the ch32fun platform wich is lighter faster and ages better than the official WCH bugged arduino platform!
 All in bare-metal and the difference is huge!!!!
 
 - The older arduino sketch used 10480 bytes (63%) of program storage space and used 588 bytes (28%) of dynamic memory. 
-- The newer ch32fun uses 1728 bytes (10.3%) of program storage space and only 8 bytes (0.4%) of dynamic memory!
+- The rev_1 ch32fun uses 1728 bytes (10.3%) of program storage space and only 8 bytes (0.4%) of dynamic memory!
+- The rev_2 has newer timing implementation made by the great @kalymos, code now is even smaller and no more ISR timing dipendent! The newer ch32fun uses aroun 1500 bytes (8.4) of program storage space and only 4 bytes (0.2%) of dynamic memory!
 
 A very huge difference, because we don't have to carry anymore all the bloatware (super bugged) HAL of arduino ported libs! So now the code is way faster and efficient!
 
