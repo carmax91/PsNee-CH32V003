@@ -166,7 +166,7 @@ void inject_SCEX(const char region)
         do
         {
           // Read the WFCK pin and set or clear DATA accordingly
-          uint8_t wfckSample = (GPIOA->INDR >> (2 & 0xf) & 1); // funDigitalRead(PA2);
+          uint8_t wfckSample = (GPIOA->INDR >> (2 & 0xf) & 1); 
           if (wfckSample == 1)
           {
             GPIOC->BSHR = (1 << 1); // //PC1 -> Data High
@@ -186,8 +186,7 @@ void inject_SCEX(const char region)
       {
 
         // PC1 <- Data Input -----------------------------------------------
-       //funPinMode(PC1, GPIO_CNF_IN_FLOATING);
-       GPIOC->CFGLR = (GPIOC->CFGLR & (~(0xf<<(4*(1&0xf))))) | (4<<(4*(1&0xf)));
+        GPIOC->CFGLR = (GPIOC->CFGLR & (~(0xf<<(4*(1&0xf))))) | (4<<(4*(1&0xf)));
         //-----------------------------------------------------------------
         Delay_Us(bits_delay);
       }
@@ -212,19 +211,15 @@ int main()
   RCC->APB2PCENR |= RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOD;
 
   // PC1 <- Data Input -----------------------------------------------
-  //funPinMode(PC1, GPIO_CNF_IN_FLOATING);
   GPIOC->CFGLR = (GPIOC->CFGLR & (~(0xf<<(4*(1&0xf))))) | (4<<(4*(1&0xf)));
   //-----------------------------------------------------------------
   // PA2 <- Wfck Input -----------------------------------------------
-  //funPinMode(PA2, GPIO_CNF_IN_FLOATING);
   GPIOA->CFGLR = (GPIOA->CFGLR & (~(0xf<<(4*(2&0xf))))) | (4<<(4*(2&0xf)));
   //-----------------------------------------------------------------
   // PC4 <- Subq Input-----------------------------------------------
-  //funPinMode(PC4, GPIO_CNF_IN_FLOATING);
   GPIOC->CFGLR = (GPIOC->CFGLR & (~(0xf<<(4*(4&0xf))))) | (4<<(4*(4&0xf)));
   //-----------------------------------------------------------------
   // PC2 <- Sqck Input-------------------------------------------------
-  //funPinMode(PC2, GPIO_CNF_IN_FLOATING);
   GPIOC->CFGLR = (GPIOC->CFGLR & (~(0xf<<(4*(2&0xf))))) | (4<<(4*(2&0xf)));
   //------------------------------------------------------------------
   // PD6 -> LED Output ------------------------------------------------
@@ -399,12 +394,10 @@ int main()
       if (!wfck_mode)
       {
         // PA2 <- Wfck Input ---------------------------------------------------
-        //funPinMode(PA2, GPIO_CNF_IN_FLOATING);
         GPIOA->CFGLR = (GPIOA->CFGLR & (~(0xf<<(4*(2&0xf))))) | (4<<(4*(2&0xf)));
         //----------------------------------------------------------------------
       }
       // PC1 <- Data Input ----------------------------------------------------
-      //funPinMode(PC1, GPIO_CNF_IN_FLOATING);
       GPIOC->CFGLR = (GPIOC->CFGLR & (~(0xf<<(4*(1&0xf))))) | (4<<(4*(1&0xf)));
       //-----------------------------------------------------------------------
 
@@ -433,4 +426,5 @@ void SysTick_Handler(void)
 
   // Increment the milliseconds count
   systick_millis++;
+
 }
