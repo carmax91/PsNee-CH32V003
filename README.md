@@ -85,4 +85,4 @@ This has some drawbacks, though:
 
 
 ## Thanks to:
-ramapcsx2, kalymos, SpenceKonde, oldcrow, mayumi, arduino community, ch32fun community and lots of people that can't remeber now.
+ramapcsx2, kalymos, SpenceKonde, oldcrow, mayumi, arduino community, ch32fun community, Infrid and lots of people that can't remeber now.
