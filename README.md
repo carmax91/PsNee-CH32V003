@@ -1,31 +1,32 @@
 # PsNee-CH32V003
-Porting of PsNee to CH32V003 rev_3.1
+Porting of ![PsNee](https://github.com/kalymos/psnee) to CH32V003 rev_3.1
 
-PsNee v7 port to the ch32v003 MCU compatible  and stealth with all Ps1 motherboards!
-Plus this code virtually don't introduces any noise or degradation of the laser RF signal level because the it injects the SCEX string only when needed.
+PsNee v7 port to the ch32v003 MCU compatible, with steal capabilities stealth for all Ps1 motherboards!
 
-I'm just a hobbyist programmer, so please forgive any coding mistakes, syntax errors, or other issues. The code is heavily based on PsNee v7/v8 by kalymos, 
-but this time I've chosed to not follow the Arduino portability philosophy. 
+Plus this code virtually don't introduce any noise or degradation of the laser RF signal level because it injects the SCEX string only when needed.
+
+I'm just a hobbyist programmer, so please forgive my coding skills. The code is heavily based on PsNee v7/v8 by kalymos, but this time I've chosen to not follow the Arduino portability philosophy.
+
 Code is written using ch32fun libs avoiding HAL when possible. The result are less portability but a faster, lighter, efficient and overall way better code!
 
 Why I haven't ported "postal" PsNee v8? Simply because JAP bios patching is bugged (with some BIOS menu crashes) and until a fix came out I'm not interested in a porting...
 
 **Warning:**
 
-- On JAP region consoles you can ONLY play japanese backups due to BIOS protection! You can add my [Jap_Bios_unlocker](https://github.com/Crx91/Ps1_Jap_Bios_Unlocker) or use my [PsNee_Aio](https://github.com/Crx91/PsNee_Aio) directly!
-- Same story for the PAL Psone SCPH-102 wich can run only backup of PAL games, but here you can use my [OneNee_ch32v003](https://github.com/carmax91/OneNee_Ch32v003) port
-  made specifically for this console to "unlock" all region reading...
+- On JAP region consoles you can ONLY play Japanese backups due to BIOS protection. You can add my [Jap_Bios_unlocker](https://github.com/Crx91/Ps1_Jap_Bios_Unlocker) or use my [PsNee_Aio](https://github.com/Crx91/PsNee_Aio) directly!
+- Same story for the PAL Psone SCPH-102, you can run only PAL backup games, but here you can use my [OneNee_ch32v003](https://github.com/carmax91/OneNee_Ch32v003) port
+  made specifically for this console to "unlock" all region reading.
 
 ## Features
 
 - Full Stealth on ALL motherboards!
-- Virtually any noise or degradation on the laser RF signal level unlike the old oldcrow\mayumi\multimode mod.
+- Virtually no noise or degradation on the laser RF signal, unlike the old oldcrow/mayumi/multimode mod.
 - Led injecting status output on chip PIN 1 (You need a 1K resistor).
 - No atmega328p+16mhz cristal or other arduino uno like "big" board, simply a 8-pin ch32v003j4m6 chip to solder that can be easly fitted in your console!
 - Bin files should be compatible even on other ch32v003 package (SOP-16, TSSOP-20 and QFN-20) and valutation board provided that you remove the external osc!
 
 ## Supported Playstations
-- All Playstation models, but with the SCPH-102 and JAP variants import games aren't supported.
+- All Playstation models, except SCPH-102 and JAP variants.
 - For SCPH-102 models, you can use my [OneNee_ch32v003](https://github.com/carmax91/OneNee_Ch32v003) port wich "unlocks" all regions backup.
 
 ## Prerequisites
@@ -59,7 +60,7 @@ All in bare-metal and the difference is huge!!!!
   And on the Injection function has updated WFCK modulation for 7.3/14.6 kHz compatibility (Again thanks to @kalymos!).
 - The rev_3.1 has some code refactoring on the board detection function and WFCK modulation.
 
-A very huge difference, because we don't have to carry anymore all the bloatware (super bugged) HAL of arduino ported libs! So now the code is way faster and efficient!
+A very big improvement: by eliminating the HAL and Arduino library dependencies (notorious for their bloat and bugs) the code is now considerably faster and more efficient.
 
 ~ ~In the src directory you can find the .ino sketch, but at the moment is useless because the official wch arduino libs are a incomplete broken mess! 
 They have completely broken functions and at the current state they are only usefull for a simple blink led or very basic GPIO playing (even blink no delay is bugged :P).
@@ -80,7 +81,7 @@ So with that information, my code knows when the PSX wants to see the unlock sym
 This has some drawbacks, though:
 
 - It's more logic / code. More things to go wrong. The testing done so far suggests it's working fine though.
-- It's not a good example anymore to demonstrate PSX security, and how modchips work in general.
+- It's not a good example any more to demonstrate PSX security, and how modchips work in general.
 
 
 ## Thanks to:
