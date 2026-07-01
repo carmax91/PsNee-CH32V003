@@ -1,7 +1,7 @@
 # PsNee-CH32V003
 Porting of ![PsNee](https://github.com/kalymos/psnee) to CH32V003 rev_3.1
 
-PsNee v7 port to the ch32v003 MCU compatible, with steal capabilities stealth for all Ps1 motherboards!
+PsNee v7 port to the ch32v003 MCU compatible, with stealth capabilities for all Ps1 motherboards!
 
 Plus this code virtually don't introduce any noise or degradation of the laser RF signal level because it injects the SCEX string only when needed.
 
@@ -21,29 +21,30 @@ Why I haven't ported "postal" PsNee v8? Simply because JAP bios patching is bugg
 
 - Full Stealth on ALL motherboards!
 - Virtually no noise or degradation on the laser RF signal, unlike the old oldcrow/mayumi/multimode mod.
-- Led injecting status output on chip PIN 1 (You need a 1K resistor).
+- Optional led injecting status output on chip PIN 1 (You need a 1K resistor and a LED).
 - No atmega328p+16mhz cristal or other arduino uno like "big" board, simply a 8-pin ch32v003j4m6 chip to solder that can be easly fitted in your console!
 - Bin files should be compatible even on other ch32v003 package (SOP-16, TSSOP-20 and QFN-20) and valutation board provided that you remove the external osc!
 
 ## Supported Playstations
-- All Playstation models, except SCPH-102 and JAP variants.
-- For SCPH-102 models, you can use my [OneNee_ch32v003](https://github.com/carmax91/OneNee_Ch32v003) port wich "unlocks" all regions backup.
+- All Playstation models (SCPH-102 and JAP variants needs a bios patch otherwise the can't launch other regions backup);
+- For SCPH-102 models, you can use my [OneNee_ch32v003](https://github.com/carmax91/OneNee_Ch32v003) port wich "unlocks" all regions backup;
+- For ALL JAP You can add my [Jap_Bios_unlocker](https://github.com/Crx91/Ps1_Jap_Bios_Unlocker) or use my [PsNee_Aio](https://github.com/Crx91/PsNee_Aio) directly!.
 
 ## Prerequisites
 - [WCH-LinkE](https://github.com/carmax91/PsNee-CH32V003/blob/main/Imgs/WCH-LinkEPrg.jpg) programmer (pay attention to the E).
 - WCH LinkUtility software.
 
 ## HowTo
-- Download this repository.
-- Install the WCH LinkUtility software and the releative drivers (all the the needed software/files are zipped in the "tool" directory).
-- Connect the LinkE programmer and check if is in RISCV mode (Blue LED should be always off when idle).
-- If not, disconect and reconnect the programmer holding down the "Mode-S" button.
-- Open LinkUtility and check if the tool sees the programmer.
-- Set the core (RISC-V) and the series (CH32V003).
-- Click on the folder icon (or press ALT+F1)
-- Select the BIN compiled files based on your console region (you can find the bin files in the [BIN](https://github.com/Crx91/PsNee-CH32V003/tree/main/BIN%20(rev_3)) folder).
-- Connect the chip to the programmer.
-- Program the chip via Target -> Program (or press F10).
+- Download this repository;
+- Install the WCH LinkUtility software and the releative drivers (all the the needed software/files are zipped in the "tool" directory);
+- Connect the LinkE programmer and check if is in RISCV mode (Blue LED should be always off when idle);
+- If not, disconect and reconnect the programmer holding down the "Mode-S" button;
+- Open LinkUtility and check if the tool sees the programmer;
+- Set the core (RISC-V) and the series (CH32V003);
+- Click on the folder icon (or press ALT+F1);
+- Select the BIN compiled files based on your console region (you can find the bin files in the [BIN](https://github.com/Crx91/PsNee-CH32V003/tree/main/BIN%20(rev_3)) folder);
+- Connect the chip to the programmer;
+- Program the chip via Target -> Program (or press F10);
 ![done](https://github.com/carmax91/PsNee-CH32V003/blob/main/Imgs/LinU2.png)
 - Now you have your PsNee on WCH CH32V003 chip!
 - For the installation, follow the wiring diagrams in the [Install](https://github.com/carmax91/PsNee-CH32V003/tree/main/Install) folder based on your console motherboard.
